@@ -11,7 +11,7 @@ public class JogoDaForca {
     private int acertos;
     private int codigoPenalidade;
     private String nomePenalidade;
-    private String resultado = "em andamento";
+    private String resultado;
     private ArrayList<String> palavrasAnteriores;
     private ArrayList<Integer> ocorrencias;
     private ArrayList<ArrayList<String>> palavrasForca;
@@ -71,6 +71,7 @@ public class JogoDaForca {
 		return this.nomePenalidade;
 	}
 	public String getResultado() {
+		this.resultado = "em andamento";
 		if (this.terminou()) {
 			if (this.getCodigoPenalidade() == 6) { 
 				this.resultado = "perdeu";
