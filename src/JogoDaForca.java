@@ -57,8 +57,13 @@ public class JogoDaForca {
 		o momento e ocultando ("*") as letras ainda não adivinhadas. */
 	}
 	public ArrayList<String> getResultados() {
-		if (this.terminou() && sorteiosAnteriores.size() > palavrasAnteriores.size()) {
-			palavrasAnteriores.add(this.getPalavra() + " => " + this.getResultado());
+		if (this.terminou()) {
+			String adicionar = this.getPalavra() + " => " + this.getResultado();
+			if (palavrasAnteriores.isEmpty()) {
+				palavrasAnteriores.add(adicionar);
+			} else if(!palavrasAnteriores.getLast().equals(adicionar)) {
+				palavrasAnteriores.add(adicionar);
+			}
 		} return this.palavrasAnteriores;
 	}
 	public ArrayList<Integer> getOcorrencias(String letra) throws Exception {
