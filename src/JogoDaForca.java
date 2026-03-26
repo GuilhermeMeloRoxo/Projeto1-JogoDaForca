@@ -13,6 +13,7 @@ public class JogoDaForca {
     private String nomePenalidade;
     private String resultado;
     private ArrayList<String> palavrasAnteriores;
+    private ArrayList<Integer> sorteiosAnteriores = new ArrayList<>();
     private ArrayList<Integer> ocorrencias;
     private ArrayList<ArrayList<String>> palavrasForca;
     
@@ -36,8 +37,15 @@ public class JogoDaForca {
 		arquivo.close();
 	}
 	public void iniciar() {
+		if (palavrasForca.size() <= sorteiosAnteriores.size()) {
+			sorteiosAnteriores.clear();
+		}
 		Random sorteio = new Random();
-		int i = sorteio.nextInt(palavrasForca.size());
+		int i;
+		do {
+			i = sorteio.nextInt(palavrasForca.size());
+		} while (sorteiosAnteriores.contains(i));
+		sorteiosAnteriores.add(i);
 		this.palavra = palavrasForca.get(i).get(0);
 		this.dica = palavrasForca.get(i).get(1);
 	}
