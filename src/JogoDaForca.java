@@ -2,6 +2,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
 import javax.swing.JOptionPane;
 
 public class JogoDaForca {
@@ -12,7 +13,7 @@ public class JogoDaForca {
     private int codigoPenalidade;
     private String nomePenalidade;
     private String resultado;
-    private ArrayList<String> palavrasAnteriores;
+    private ArrayList<String> palavrasAnteriores = new ArrayList<>();
     private ArrayList<Integer> sorteiosAnteriores = new ArrayList<>();
     private ArrayList<Integer> ocorrencias;
     private ArrayList<ArrayList<String>> palavrasForca;
@@ -33,8 +34,7 @@ public class JogoDaForca {
 			palavras.add(lista[0]);
 			palavras.add(lista[1]);
 			palavrasForca.add(palavras);
-		}
-		arquivo.close();
+		} arquivo.close();
 	}
 	public void iniciar() {
 		if (palavrasForca.size() <= sorteiosAnteriores.size()) {
@@ -57,8 +57,9 @@ public class JogoDaForca {
 		o momento e ocultando ("*") as letras ainda não adivinhadas. */
 	}
 	public ArrayList<String> getResultados() {
-		/* retorna as palavras sorteadas anteriormente 
-		com os respectivos resultados. */
+		if (this.terminou()) {
+			palavrasAnteriores.add(this.getPalavra() + " => " + this.getResultado());
+		} return this.palavrasAnteriores;
 	}
 	public ArrayList<Integer> getOcorrencias(String letra) throws Exception {
 		/*retorna uma lista com as posições (1 a N) da “letra” encontrada dentro da palavra sorteada ou, caso
@@ -102,7 +103,6 @@ public class JogoDaForca {
 			} else {
 				this.resultado = "venceu";
 			}
-		}
-		return this.resultado;
+		} return this.resultado;
 	}
 }
