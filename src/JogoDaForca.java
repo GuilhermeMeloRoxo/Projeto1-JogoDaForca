@@ -16,7 +16,8 @@ public class JogoDaForca {
     private ArrayList<String> palavrasAnteriores = new ArrayList<>();
 	private ArrayList<String> letrasAnteriores = new ArrayList<>();
     private ArrayList<Integer> sorteiosAnteriores = new ArrayList<>();
-    private ArrayList<Integer> ocorrencias;
+    private ArrayList<Integer> ocorrencias =  new ArrayList<>();
+	private ArrayList<Integer> reveladas = new ArrayList<>();
     private ArrayList<ArrayList<String>> palavrasForca;
     
 	public JogoDaForca() {
@@ -56,8 +57,18 @@ public class JogoDaForca {
 		return this.dica;
 	}
 	public String getPalavra() {
-		/* retorna a palavra sorteada, revelando as letras adivinhadas até 
-		o momento e ocultando ("*") as letras ainda não adivinhadas. */
+
+		String revelacao = new String();
+		
+		/* Verifica quais índices da palavra foram revelados e adiciona * ou a letra revelada. */
+		for (int i = 0; i < this.palavra.length(); i++) {
+			if (this.reveladas.contains(i)) {
+				revelacao += this.palavra.substring(i, i+1);
+			} else {
+				revelacao += "*";
+			}
+		}
+		return revelacao;
 	}
 	public ArrayList<String> getResultados() {
 		if (this.terminou()) {
