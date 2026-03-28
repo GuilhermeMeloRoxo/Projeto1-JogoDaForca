@@ -41,6 +41,7 @@ public class JogoDaForca {
 		this.codigoPenalidade = 0;
 		this.acertos = 0;
 		this.reveladas.clear();
+		this.letrasAnteriores.clear();
 		if (palavrasForca.size() <= sorteiosAnteriores.size()) {
 			sorteiosAnteriores.clear();
 		}
