@@ -85,7 +85,7 @@ public class JogoDaForca {
 			case String s when s.length() != 1 ->
 			throw new IllegalArgumentException("Digite apenas uma letra");
 
-			case String s when !s.matches("[a-zA-z]") ->
+			case String s when !s.matches("[A-ZÇ]") ->
 			throw new IllegalArgumentException("Digite uma letra válida");
 
 			case String s when this.letrasAnteriores.contains(s) ->
