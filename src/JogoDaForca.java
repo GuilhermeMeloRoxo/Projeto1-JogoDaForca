@@ -80,6 +80,7 @@ public class JogoDaForca {
 	}
 	public ArrayList<Integer> getOcorrencias(String letra) throws Exception {
 		/* Verificando exceções */
+		letra = letra.toUpperCase();
 		switch (letra) {
 			case String s when s.length() != 1 ->
 			throw new IllegalArgumentException("Digite apenas uma letra");
@@ -91,10 +92,10 @@ public class JogoDaForca {
 			throw new IllegalArgumentException("Letra já digitada anteriormente!");
 
 			default ->
-			letra = letra.toUpperCase();
+			letrasAnteriores.add(letra); /* Adicionando a letra digitada no array de letras anteriores */
 		}
-		/* Adicionando a letra digitada no array de letras anteriores */
-		letrasAnteriores.add(letra);
+
+
 		/* Verificando se a letra está contida na palavra e guardando o índice caso esteja */
 		ArrayList<Integer> ocorrencias = new ArrayList<>();
 		for (int i = 0; i < this.palavra.length(); i++) {
@@ -107,6 +108,9 @@ public class JogoDaForca {
 			this.codigoPenalidade += 1;
 		} else {
 			this.acertos += ocorrencias.size();
+			for (Integer indice: ocorrencias) {
+				this.reveladas.add(indice);
+			}
 		}
 		return ocorrencias;
 	}
