@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 public class TelaJogo {
 
 	private JFrame frame;
+	private String letraDigitada;
+	private JogoDaForca jogo = new JogoDaForca();
 
 	/**
 	 * Launch the application.
