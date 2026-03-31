@@ -62,7 +62,7 @@ public class JogoDaForca {
 		/* Verifica quais índices da palavra foram revelados e adiciona * ou a letra revelada. */
 		for (int i = 0; i < this.palavra.length(); i++) {
 			if (this.reveladas.contains(i)) {
-				revelacao += this.palavra.substring(i, i+1).toLowerCase();
+				revelacao += this.palavra.substring(i, i+1).toUpperCase();
 			} else {
 				revelacao += "*";
 			}
@@ -70,7 +70,7 @@ public class JogoDaForca {
 	}
 	public ArrayList<String> getResultados() {
 		if (this.terminou()) {
-			resultadosAnteriores.add(this.getPalavra() + " => " + this.getResultado());
+			resultadosAnteriores.add(this.palavra + " => " + this.getResultado());
 		} return this.resultadosAnteriores;
 	}
 	public ArrayList<Integer> getOcorrencias(String letra) throws Exception {
