@@ -1,15 +1,14 @@
 import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
+import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import java.awt.Font;
 
 public class TelaJogo {
 
@@ -60,6 +59,7 @@ public class TelaJogo {
 		frame.setTitle("Jogo da Forca");
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
+		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setFont(new Font("Tahoma", Font.BOLD, 11));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
