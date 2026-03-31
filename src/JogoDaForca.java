@@ -2,7 +2,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-
 import javax.swing.JOptionPane;
 
 public class JogoDaForca {
@@ -81,7 +80,7 @@ public class JogoDaForca {
 		}
 		letra = letra.toUpperCase();
 
-		if (!letra.matches("[A-ZÇ]")) {
+		if (!letra.matches("[A-Z]")) {
 			throw new IllegalArgumentException("Digite uma letra válida");
 		} else if (this.letrasAnteriores.contains(letra)) {
 			throw new IllegalArgumentException("Letra já digitada anteriormente!");
