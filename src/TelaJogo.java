@@ -1,15 +1,31 @@
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.Font;
 
 public class TelaJogo {
 
 	private JFrame frame;
+	private JButton buttonIniciar;
+	private JTextField textField;
+	private JLabel labelDica;
+	private JLabel labelResultado;
+	private JButton buttonAdivinhar;
+	private JLabel labelPalavra;
+	private String letraDigitada;
+	private JLabel labelAcertos;
+	private JLabel labelPenalidades;
+	private JLabel labelImagem;
+	private JTextArea textAreaHistorico;
+	private JScrollPane scrollPane;
 	private JogoDaForca jogo = new JogoDaForca();
 
 	/**
@@ -42,76 +58,128 @@ public class TelaJogo {
 		frame = new JFrame();
 		frame.setTitle("Jogo da Forca");
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 500, 300);
+		frame.setBounds(100, 100, 450, 300);
+		frame.getContentPane().setFont(new Font("Tahoma", Font.BOLD, 11));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton iniciar = new JButton("Iniciar");
-		iniciar.setBounds(10, 11, 86, 23);
-		frame.getContentPane().add(iniciar);
+		buttonIniciar = new JButton("Iniciar");
+		buttonIniciar.setFont(new Font("Tahoma", Font.BOLD, 12));
+		buttonIniciar.setBounds(10, 12, 86, 24);
+		frame.getContentPane().add(buttonIniciar);
 		
-		JTextField textField = new JTextField();
+		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setEnabled(false);
-		textField.setToolTipText("Digite a letra que quer adivinhar!");
-		textField.setBounds(10, 90, 42, 30);
+		textField.setToolTipText("Digite apenas uma letra!");
+		textField.setBounds(10, 80, 52, 24);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel dica = new JLabel("VAI FICAR A DICA AQUI");
-		dica.setVisible(false);
-		dica.setBounds(10, 46, 127, 33);
-		frame.getContentPane().add(dica);
+		labelDica = new JLabel("DICA VAI FICAR AQUI");
+		labelDica.setFont(new Font("Tahoma", Font.BOLD, 12));
+		labelDica.setVisible(false);
+		labelDica.setBounds(10, 46, 301, 24);
+		frame.getContentPane().add(labelDica);
 		
-		JLabel resultado = new JLabel("Inicie o jogo!");
-		resultado.setBounds(10, 181, 127, 50);
-		frame.getContentPane().add(resultado);
+		labelResultado = new JLabel("Inicie o jogo!");
+		labelResultado.setFont(new Font("Tahoma", Font.BOLD, 12));
+		labelResultado.setBounds(10, 141, 232, 24);
+		frame.getContentPane().add(labelResultado);
 		
+		buttonAdivinhar = new JButton("Adivinhar");
+		buttonAdivinhar.setFont(new Font("Tahoma", Font.BOLD, 12));
+		buttonAdivinhar.setBounds(91, 81, 96, 24);
+		buttonAdivinhar.setEnabled(false);
+		frame.getContentPane().add(buttonAdivinhar);
 		
-		iniciar.addActionListener(sorteio -> {
+		labelPalavra = new JLabel("PALAVRA VAI FICAR AQUI");
+		labelPalavra.setFont(new Font("Tahoma", Font.BOLD, 12));
+		labelPalavra.setVisible(false);
+		labelPalavra.setBounds(10, 114, 189, 24);
+		frame.getContentPane().add(labelPalavra);
+		
+		labelAcertos = new JLabel("Acertos: 0");
+		labelAcertos.setFont(new Font("Tahoma", Font.BOLD, 12));
+		labelAcertos.setVisible(false);
+		labelAcertos.setForeground(new Color(0, 128, 0));
+		labelAcertos.setBounds(121, 10, 78, 24);
+		frame.getContentPane().add(labelAcertos);
+		
+		labelPenalidades = new JLabel("Penalidade 0: sem penalidadades");
+		labelPenalidades.setForeground(new Color(128, 0, 0));
+		labelPenalidades.setFont(new Font("Tahoma", Font.BOLD, 12));
+		labelPenalidades.setVisible(false);
+		labelPenalidades.setBounds(197, 8, 229, 28);
+		frame.getContentPane().add(labelPenalidades);
+		
+		labelImagem = new JLabel();
+		labelImagem.setIcon(new ImageIcon(TelaJogo.class.getResource("/imagens/6.png")));
+		labelImagem.setBounds(252, 80, 150, 149);
+		frame.getContentPane().add(labelImagem);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 172, 177, 81);
+		frame.getContentPane().add(scrollPane);
+		textAreaHistorico = new JTextArea("Histórico Vazio!");
+		scrollPane.setViewportView(textAreaHistorico);
+		textAreaHistorico.setEditable(false);
+		textAreaHistorico.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textAreaHistorico.setDisabledTextColor(new Color(0, 0, 0));
+		textAreaHistorico.setEnabled(false);
+		
+		buttonIniciar.addActionListener(sorteio -> {
 			jogo.iniciar();
+			labelResultado.setText("Jogo Iniciado - Digite uma letra");
 			textField.setEnabled(true);
-			dica.setText(jogo.getDica());
-			dica.setVisible(true);
-			resultado.setVisible(false);
+			buttonAdivinhar.setEnabled(true);
+			labelDica.setText("Dica: " + jogo.getDica());
+			labelDica.setVisible(true);
+			labelPalavra.setText("Palavra: " + jogo.getPalavra());
+			labelPalavra.setVisible(true);
+			labelAcertos.setVisible(true);
+			labelAcertos.setText("Acertos: " + jogo.getAcertos());
+			labelPenalidades.setVisible(true);
+			labelPenalidades.setText("Penalidade " + jogo.getCodigoPenalidade() + ": " + jogo.getNomePenalidade());
+			textField.requestFocus();
+			labelImagem.setIcon(new ImageIcon(TelaJogo.class.getResource("/imagens/0.png")));
 		});
 		
-		
-		JButton adivinhar = new JButton("Adivinhar");
-		adivinhar.setBounds(145, 87, 89, 33);
-		frame.getContentPane().add(adivinhar);
-		
-		JLabel palavra = new JLabel("VAI FICAR A PALAVRA AQUI");
-		palavra.setVisible(false);
-		palavra.setBounds(10, 119, 127, 33);
-		frame.getContentPane().add(palavra);
-		
 
-		adivinhar.addActionListener(e ->{
+		buttonAdivinhar.addActionListener(e ->{
 			try {
-				String letra = textField.getText();
+				letraDigitada = textField.getText();
 				textField.setText("");
 				textField.requestFocus();
-				if (!jogo.getOcorrencias(letra).isEmpty()) {
-					resultado.setText("você acertou a letra " + letra.toUpperCase());
-					frame.getContentPane().add(resultado);
+				if (!jogo.getOcorrencias(letraDigitada).isEmpty()) {
+					labelResultado.setText("Você acertou a letra " + letraDigitada.toUpperCase());
+					frame.getContentPane().add(labelResultado);
 				} else {
-					resultado.setText("você errou a letra " + letra.toUpperCase());
-					frame.getContentPane().add(resultado);
+					labelResultado.setText("Você errou a letra " + letraDigitada.toUpperCase());
 				}
-				resultado.setVisible(true);
 			}
 			catch (Exception erro){
-				JOptionPane.showMessageDialog(null, erro.getMessage());
+				JOptionPane.showMessageDialog(frame, erro.getMessage());
 			}
-			palavra.setText("Palavra: " + jogo.getPalavra());
-			palavra.setVisible(true);
+			labelPalavra.setText("Palavra: " + jogo.getPalavra());
+			labelAcertos.setText("Acertos: " + jogo.getAcertos());
+			labelPenalidades.setText("Penalidade " + jogo.getCodigoPenalidade() + ": " + jogo.getNomePenalidade());
+			int i = jogo.getCodigoPenalidade();
+			String foto = String.format("/imagens/%d.png", i);
+			labelImagem.setIcon(new ImageIcon(TelaJogo.class.getResource(foto)));
 			if (!jogo.getResultado().equals("em andamento")) {
-				JOptionPane.showMessageDialog(null,  "Você " + jogo.getResultado() + " o jogo!");
+				if (jogo.getResultado().equals("venceu")) {
+					labelResultado.setText("Você " + jogo.getResultado() + " - Inicie outro jogo!");
+				} else {
+					labelResultado.setText("Você " + jogo.getResultado() + " - Inicie outro jogo!");
+				}
 				textField.setEnabled(false);
-				dica.setVisible(false);
-				palavra.setVisible(false);
-				resultado.setText("Inicie outro jogo!");
+				buttonAdivinhar.setEnabled(false);
+				if (textAreaHistorico.getText().equals("Histórico Vazio!")) {
+					textAreaHistorico.setText(jogo.getResultados().getLast());
+				} else {
+					textAreaHistorico.append("\n" + jogo.getResultados().getLast());
+				}
 			}
 		});
 
