@@ -15,6 +15,7 @@ public class TelaJogo {
 
 	private JFrame frame;
 	private JButton buttonIniciar;
+	private JLabel labelLetra;
 	private JTextField textField;
 	private JLabel labelDica;
 	private JLabel labelResultado;
@@ -68,15 +69,20 @@ public class TelaJogo {
 		buttonIniciar.setBounds(10, 12, 86, 24);
 		frame.getContentPane().add(buttonIniciar);
 		
+		labelLetra = new JLabel("Letra:");
+		labelLetra.setFont(new Font("Tahoma", Font.BOLD, 12));
+		labelLetra.setBounds(10, 80, 52, 24);
+		frame.getContentPane().add(labelLetra);
+		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setEnabled(false);
 		textField.setToolTipText("Digite apenas uma letra!");
-		textField.setBounds(10, 80, 52, 24);
+		textField.setBounds(51, 80, 52, 24);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		labelDica = new JLabel("DICA VAI FICAR AQUI");
+		labelDica = new JLabel("Dica: ");
 		labelDica.setFont(new Font("Tahoma", Font.BOLD, 12));
 		labelDica.setVisible(false);
 		labelDica.setBounds(10, 46, 301, 24);
@@ -89,11 +95,11 @@ public class TelaJogo {
 		
 		buttonAdivinhar = new JButton("Adivinhar");
 		buttonAdivinhar.setFont(new Font("Tahoma", Font.BOLD, 12));
-		buttonAdivinhar.setBounds(91, 81, 96, 24);
+		buttonAdivinhar.setBounds(113, 80, 96, 24);
 		buttonAdivinhar.setEnabled(false);
 		frame.getContentPane().add(buttonAdivinhar);
 		
-		labelPalavra = new JLabel("PALAVRA VAI FICAR AQUI");
+		labelPalavra = new JLabel("Palavra: ");
 		labelPalavra.setFont(new Font("Tahoma", Font.BOLD, 12));
 		labelPalavra.setVisible(false);
 		labelPalavra.setBounds(10, 114, 189, 24);
@@ -119,7 +125,7 @@ public class TelaJogo {
 		frame.getContentPane().add(labelImagem);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 172, 177, 81);
+		scrollPane.setBounds(10, 172, 163, 81);
 		frame.getContentPane().add(scrollPane);
 		textAreaHistorico = new JTextArea("Histórico Vazio!");
 		scrollPane.setViewportView(textAreaHistorico);
