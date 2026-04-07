@@ -159,7 +159,6 @@ public class TelaJogo {
 				textField.requestFocus();
 				if (!jogo.getOcorrencias(letraDigitada).isEmpty()) {
 					labelResultado.setText("Você acertou a letra " + letraDigitada.toUpperCase());
-					frame.getContentPane().add(labelResultado);
 				} else {
 					labelResultado.setText("Você errou a letra " + letraDigitada.toUpperCase());
 				}
