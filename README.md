@@ -2,13 +2,10 @@
 Projeto do segundo período do curso de Engenharia de Software - IFPB Campus João Pessoa
 
 ## Descrição
-O jogador pode errar apenas 5 vezes, para adivinhar as letras de uma palavra, baseando-se apenas no seu tamanho e em uma dica.
+O jogador pode errar apenas 5 vezes, para adivinhar as letras de uma palavra, baseando-se apenas no seu tamanho e em uma dica. O jogador vence, quando adivinhar todas as letras da palavra, e perde, quando atinge a penalidade 6.
 
-• A cada tentativa correta, o jogador descobre as ocorrências da letra dentro da palavra.
-
-• A cada tentativa errada, o jogador recebe uma penalidade crescente (1 - “perdeu primeira perna”, 2 - “perdeu segunda perna”, 3 -”perdeu primeiro braço”, 4 -”perdeu segundo braço”, 5 -”perdeu tronco” e 6 -”perdeu cabeça”). Iniciando-se em 0 - “sem penalidades”.
-
-O jogador vence, quando adivinhar todas as letras da palavra, e perde, quando atinge a penalidade 6.
+- A cada tentativa correta, o jogador descobre as ocorrências da letra dentro da palavra.
+- A cada tentativa errada, o jogador recebe uma penalidade crescente (1 - “perdeu primeira perna”, 2 - “perdeu segunda perna”, 3 -”perdeu primeiro braço”, 4 -”perdeu segundo braço”, 5 -”perdeu tronco” e 6 -”perdeu cabeça”). Iniciando-se em 0 - “sem penalidades”.
 
 ## Funcionalidades
 - Navegação Intuitiva
@@ -25,14 +22,14 @@ O jogador vence, quando adivinhar todas as letras da palavra, e perde, quando at
 - JDK 26
 
 ### Instalação
-1. Clone o repositório
-   git clone https://github.com/GuilhermeMeloRoxo/Projeto1-JogoDaForca.git
-2. Execute o projeto
-   java TelaJogo.java
+1. Clone o repositório:
+   - git clone https://github.com/GuilhermeMeloRoxo/Projeto1-JogoDaForca.git
+2. Execute o projeto:
+   - java TelaJogo.java
 
 ## Testes
-cd src/
-java Teste.java
+- cd src/
+- java Teste.java
 
 ## Estrutura do Projeto
 
