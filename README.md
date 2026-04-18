@@ -46,7 +46,7 @@ O jogador pode errar apenas 5 vezes, para adivinhar as letras de uma palavra, ba
           |   ├── 5.png
           |   └── 6.png
           ├── JogodaForca.java      # Lógica principal
-          ├── TelaJogo.java	    # Interface Gráfica
+          ├── TelaJogo.java	        # Interface Gráfica
           └── Teste.java		    # Teste
 
 ## Autores
