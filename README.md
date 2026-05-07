@@ -9,7 +9,10 @@ O jogador pode errar apenas 5 vezes, para adivinhar as letras de uma palavra, ba
 
 ## Funcionalidades
 - Navegação Intuitiva
-- Layout Responsivo
+- Controle de Tentativas Repetidas
+- Sorteio e Exibição
+- Verificação de Ocorrências
+- Entrada de Letras
 
 ## Tecnologias Utilizadas
 - Frontend: Java
